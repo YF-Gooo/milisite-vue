@@ -7,9 +7,7 @@
         {{image.view}}观赏
       </div>
     </div>
-    <div class="image-url">
-      {{image.url}}
-    </div>
+    <img :src="image.avatar" alt="">
     <div class="image-info">
       <pre>{{image.info}}</pre>
     </div>

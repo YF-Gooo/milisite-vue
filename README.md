@@ -1,6 +1,9 @@
 # milisite-vue
 喵站的前端界面
 
+# 主页
+![avatar](images/home.jpg)
+
 ## Project setup
 ```
 npm install
