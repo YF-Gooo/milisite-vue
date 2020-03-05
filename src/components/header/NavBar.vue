@@ -42,7 +42,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      user:"爱吃大番薯",
+      user:"",
       text:"",
     };
   },
