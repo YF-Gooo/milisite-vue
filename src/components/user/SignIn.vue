@@ -55,7 +55,7 @@ export default {
 <style>
 #signin_wrap {
   width: 300px;
-  margin: 100px auto;
+  margin: 200px auto;
 }
 
 #signin_wrap h1 {

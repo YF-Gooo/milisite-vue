@@ -70,7 +70,7 @@ export default {
 <style>
 #signup_wrap {
   width: 300px;
-  margin: 100px auto;
+  margin: 200px auto;
 }
 
 #signup_wrap h1 {

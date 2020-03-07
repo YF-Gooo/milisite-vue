@@ -1,66 +1,64 @@
 <template>
-  <el-menu class="top-bar" mode="horizontal" router>
-      <div class="logo">
-        <el-col :xs="24" :sm="24" :md="4" :lg="4" :xl="4">
-          <div style="text-align:center;line-height:50px;">
-              <span style="color:#FF9933;font-size:30px;font-weight:bold;">M</span>
-              <span style="font-size:30px;font-size:30px;">i</span>
-              <span style="color:#999999;font-size:30px;">l</span>
-              <span style="font-size:30px;">i</span>
-              <span style="font-size:30px;">-</span>
-              <span style="color:#8B7D6B;font-size:25px;">S</span>
-              <span style="font-size:25px;">i</span>
-              <span style="font-size:25px;">t</span>
-              <span style="font-size:25px;">e</span>
-          </div>
-      </el-col>
-    </div>
-    <el-menu-item index="/">首页</el-menu-item>
-    <el-menu-item index="/postimage">投放照片</el-menu-item>
-    <el-menu-item index="/about">关于喵站</el-menu-item>
-    <el-menu-item v-if="!user" index="/signin">登录</el-menu-item>
-    <el-menu-item v-if="!user" index="/signup">注册</el-menu-item>
-    <el-menu-item v-if="user">
-      <el-dropdown>
-        <span class="el-dropdown-link">
-          {{user}}<i class="el-icon-arrow-down el-icon--right"></i>
-        </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>黄金糕</el-dropdown-item>
-          <el-dropdown-item>狮子头</el-dropdown-item>
-          <el-dropdown-item>螺蛳粉</el-dropdown-item>
-          <el-dropdown-item disabled>双皮奶</el-dropdown-item>
-          <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
-        </el-dropdown-menu>
+  <el-row class="navbar">
+    <el-col :span="2" class="logo">
+      <span style="color:#FF9933;font-size:30px;font-weight:bold;">M</span>
+      <span style="font-size:30px;font-size:30px;">i</span>
+      <span style="color:#999999;font-size:30px;">l</span>
+      <span style="font-size:30px;">i</span>
+    </el-col>
+    <el-col :span="18">
+        <el-link type="info" href="/">首页</el-link>
+        <el-link type="info" href="/postimage">投放照片</el-link>
+        <el-link type="info" href="/about">关于喵站</el-link>
+    </el-col>
+    <el-col :span="4">
+        <el-link v-if="!user" type="info" href="/signin">登录</el-link>
+        <el-link v-if="!user" type="info" href="/signup">注册</el-link>
+        <el-dropdown v-if="user">
+          <span class="el-dropdown-link">
+            {{user}}<i class="el-icon-arrow-down el-icon--right"></i>
+          </span>
+          <el-dropdown-menu slot="dropdown">
+            <el-dropdown-item>黄金糕</el-dropdown-item>
+            <el-dropdown-item>狮子头</el-dropdown-item>
+            <el-dropdown-item>螺蛳粉</el-dropdown-item>
+            <el-dropdown-item disabled>双皮奶</el-dropdown-item>
+            <el-dropdown-item divided>蚵仔煎</el-dropdown-item>
+          </el-dropdown-menu>
       </el-dropdown>
-    </el-menu-item>
-  </el-menu>
+    </el-col>
+  </el-row>
 </template>
-
 <script>
 export default {
   name: 'NavBar',
   data() {
     return {
-      user:"",
+      user:"爱吃大番薯",
       text:"",
     };
   },
 };
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
-.top-bar {
-  margin:0 20%;
-  margin-bottom: 20px;
+<style>
+.logo{
+  height:60px;
+  text-align:center;
+  line-height:60px;
 }
-.el-dropdown-link {
+.navbar .el-link{
+  height:60px;
+  margin:0 0.5em;
+}
+.navbar .el-dropdown{
+  margin-top:18px;
+}
+.navbar .el-dropdown-link {
   cursor: pointer;
   color: #8B7D6B;
-  font-size: 18px;
+  font-size: 15px;
 }
-.el-icon-arrow-down {
-  font-size: 18px;
+.navbar .el-icon-arrow-down {
+  font-size: 15px;
 }
 </style>

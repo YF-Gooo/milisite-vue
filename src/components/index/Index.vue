@@ -1,8 +1,12 @@
 <template>
   <div class="main-wrapper">
-    <router-view name="header"></router-view>
-    <router-view name="content"></router-view>
-    <router-view name="footer"></router-view>
+  <el-container>
+    <el-header>
+      <router-view name="header"></router-view>
+    </el-header>
+    <el-main><router-view name="content"></router-view></el-main>
+    <el-footer><router-view name="footer"></router-view></el-footer>
+  </el-container>
   </div>
 </template>
 

@@ -110,7 +110,7 @@ export default {
 
 <style>
   .post-image{
-    margin:0 30%;
+    margin:5% 30%;
   }
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;

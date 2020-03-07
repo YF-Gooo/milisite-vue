@@ -18,7 +18,7 @@
         <el-pagination
           @size-change="handleSizeChange"
           @current-change="handleCurrentChange"
-          :page-size="3"
+          :page-size="6"
           layout="prev, pager, next"
           :total="total">
         </el-pagination>
@@ -36,7 +36,7 @@ export default {
     return {
       images: [],
       start: 0,
-      limit: 3,
+      limit: 6,
       total: 0,
     };
   },
