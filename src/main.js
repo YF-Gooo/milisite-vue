@@ -8,7 +8,7 @@ import axios from 'axios';
 Vue.prototype.$axios = axios;
 Vue.use(ElementUI) //使用elementUI
 Vue.config.productionTip = false
-
+Vue.use(require('vue-moment'));
 new Vue({
   router,
   store,

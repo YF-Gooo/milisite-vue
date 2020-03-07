@@ -7,9 +7,11 @@
         {{image.view}}观赏
       </div>
     </div>
-    <img :src="image.avatar" alt="">
     <div class="image-info">
-      <pre>{{image.info}}</pre>
+        <el-card class="image-card">
+          <img class="image-avatar" :src="image.avatar">
+        </el-card>
+        <p>{{image.info}}</p>
     </div>
   </div>
 </template>
@@ -38,7 +40,10 @@ export default {
 </script>
 
 <style>
-
+.post-image{
+  margin: 0 25%;
+  
+}
 .image-header {
   margin-bottom: 16px;
 }
@@ -61,4 +66,5 @@ export default {
 .image-info {
   color: #111;
 }
+
 </style>

@@ -26,7 +26,7 @@
       </el-form-item>
 
       <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button type="primary" @click="onSubmit" :loading="uploading">立即创建</el-button>
       </el-form-item>
 
     </el-form>
@@ -45,6 +45,7 @@ export default {
       imageUrl: '',
       dialogImageUrl: '',
       dialogVisible: false,
+      uploading:false,
       form: {
         title: '',
         info: '',
@@ -82,6 +83,8 @@ export default {
       });
     },
     onSubmit() {
+      let _this = this;
+      _this.uploading=true
       API.postImage(this.form).then((res) => {
         if (res.status > 0) {
           this.$notify.error({
@@ -94,12 +97,15 @@ export default {
             message: `您投稿的ID为${res.data.id}`,
             type: 'success',
           });
+          _this.uploading=false,
+          _this.$router.push("/image/"+res.data.id)
         }
       }).catch((error) => {
         this.$notify.error({
           title: '网路错误，或者服务器宕机',
           message: error,
         });
+        _this.uploading=false
       });
     },
   },

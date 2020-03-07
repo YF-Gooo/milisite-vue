@@ -29,7 +29,6 @@
 
 <script>
 import * as API from '@/api/image/';
-
 export default {
   name: 'home',
   data() {
@@ -55,10 +54,13 @@ export default {
       this.$router.push({ name: 'showImage', params: { imageID: image.id } });
     },
   },
-  components: {
+  //vue对象中
+  beforeRouteLeave (to, from, next){
+    to.meta.keepAlive = true;
+    next();
   },
   beforeMount() {
-    this.load();
+      this.load();
   },
 };
 </script>

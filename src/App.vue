@@ -1,12 +1,28 @@
 <template>
   <div id="app" class="main-contianer">
-    <router-view></router-view>
+    <el-container>
+      <el-header>
+        <NarBar></NarBar>
+      </el-header>
+      <el-main>
+        <router-view name="content"></router-view>
+      </el-main>
+      <el-footer>
+        <Footer></Footer>
+      </el-footer>
+    </el-container>
   </div>
 </template>
 
 <script>
+import NarBar from '@/components/header/NavBar.vue'
+import Footer from '@/components/footer/Footer'
 export default {
   name: 'app',
+  components: {
+    NarBar,
+    Footer
+  },
 };
 </script>
 
