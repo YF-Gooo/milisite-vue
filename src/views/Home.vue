@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style>
-.image-avatar {
+.home .image-avatar {
   width: 100%;
 }
 .image-title {

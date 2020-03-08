@@ -20,7 +20,7 @@
           :http-request="fnUploadRequest"
           :show-file-list="false">
           <img v-if="imageUrl" :src="imageUrl" class="avatar">
-          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          <i v-else class="el-icon-plus avatar-uploader-icon" style="line-height: 163px;"></i>
           <div class="el-upload__tip" slot="tip">只能上传png文件，且不超过500kb</div>
         </el-upload>
       </el-form-item>
@@ -116,7 +116,7 @@ export default {
 
 <style>
   .post-image{
-    margin:5% 30%;
+    margin:5% 20%;
   }
   .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
@@ -137,8 +137,8 @@ export default {
     text-align: center;
   }
   .avatar {
-    max-width: 178px;
-    max-height: 178px;
+    width: 178px;
+    height: 178px;
     display: block;
   }
 </style>

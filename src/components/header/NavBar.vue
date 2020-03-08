@@ -6,12 +6,12 @@
       <span style="color:#999999;font-size:30px;">l</span>
       <span style="font-size:30px;">i</span>
     </el-col>
-    <el-col :span="18">
+    <el-col :span="16">
         <el-link type="info" href="/">首页</el-link>
         <el-link type="info" href="/postimage">投放照片</el-link>
         <el-link type="info" href="/about">关于喵站</el-link>
     </el-col>
-    <el-col :span="4">
+    <el-col :span="6">
         <el-link v-if="!user" type="info" href="/signin">登录</el-link>
         <el-link v-if="!user" type="info" href="/signup">注册</el-link>
         <el-dropdown v-if="user">
@@ -34,7 +34,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      user:"爱吃大番薯",
+      user:"",
       text:"",
     };
   },

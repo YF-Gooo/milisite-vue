@@ -1,11 +1,31 @@
 <template>
   <div id="signup_wrap">
     <h1>用户注册</h1>
-    <el-input v-model="nickname" placeholder="NickName"></el-input>
-    <el-input v-model="user_name" placeholder="请输入用户名"></el-input>
-    <el-input v-model="password" placeholder="请输入密码" type="password"></el-input>
-    <el-input v-model="password_confirm" placeholder="请再次输入密码" type="password"></el-input>
-    <el-button @click="signup">注册</el-button>
+    <el-form :label-position="labelPosition" label-width="80px" :model="formLabelAlign">
+      <el-form-item label="用户名">
+        <el-input v-model="user_name" placeholder="请输入用户名"></el-input>
+      </el-form-item>
+      <el-form-item label="昵称">
+        <el-input v-model="nickname" placeholder="请输入昵称"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="password" placeholder="请输入密码" type="password"></el-input>
+      </el-form-item>
+      <el-form-item label="核对密码">
+        <el-input v-model="password_confirm" placeholder="请再次输入密码" type="password"></el-input>
+      </el-form-item>
+      <el-form-item
+        prop="email"
+        label="邮箱"
+        :rules="[
+          { required: true, message: '请输入邮箱地址', trigger: 'blur' },
+          { type: 'email', message: '请输入正确的邮箱地址', trigger: ['blur', 'change'] }
+        ]"
+      >
+        <el-input v-model="email"></el-input>
+      </el-form-item>
+    </el-form>
+    <el-button style="margin-top:17px;" @click="signup">注册</el-button>
   </div>
 </template>
 
@@ -19,6 +39,8 @@ export default {
       user_name: "",
       password: "",
       password_confirm:"",
+      email: '',
+      labelPosition: 'right',
     };
   },
   methods: {
@@ -70,15 +92,19 @@ export default {
 <style>
 #signup_wrap {
   width: 300px;
-  margin: 200px auto;
+  margin: 0 auto;
+  margin-top:150px;
 }
 
+#signup_wrap .el-form-item{
+  height:25px
+}
 #signup_wrap h1 {
   color: #383a42;
   padding: 10px;
 }
 
 #signup_wrap div {
-  padding-bottom: 20px;
+  padding-bottom: 3px;
 }
 </style>
