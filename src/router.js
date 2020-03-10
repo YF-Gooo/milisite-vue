@@ -4,8 +4,8 @@ import Home from './views/Home.vue';
 import About from  './views/About.vue'
 import SignIn from  '@/components/user/SignIn.vue'
 import SignUp from  '@/components/user/SignUp.vue'
-import PostImage from  '@/components/image/PostImage.vue'
-import ShowImage from  '@/components/image/ShowImage.vue'
+import PostPhoto from  '@/components/photo/PostPhoto.vue'
+import ShowPhoto from  '@/components/photo/ShowPhoto.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -34,17 +34,17 @@ export default new Router({
       }
     },
     {
-      path: '/postImage',
-      name: 'postImage',
+      path: '/postPhoto',
+      name: 'postPhoto',
       components: {
-        content: PostImage,
+        content: PostPhoto,
       },
     },
     {
-      path: '/image/:imageID',
-      name: 'showImage',
+      path: '/photo/:photoID',
+      name: 'showPhoto',
       components: {
-        content: ShowImage,
+        content: ShowPhoto,
       },
       meta: {
         title: 'MILI-Site | 喵站',

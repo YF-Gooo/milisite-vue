@@ -1,5 +1,5 @@
 <template>
-  <div class="post-image">
+  <div class="post-photo">
     <h2>欢迎投稿：</h2>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="标题">
@@ -7,20 +7,20 @@
       </el-form-item>
 
       <el-form-item label="描述">
-        <el-input type="textarea" v-model="form.info"></el-input>
+        <el-input type="textarea"  :rows="7" v-model="form.info"></el-input>
       </el-form-item>
 
       <el-form-item label="图片">
         <el-upload
-          class="avatar-uploader"
+          class="image-uploader"
           label="描述"
           action=""
           ref="upload"
           :before-upload="fnBeforeUpload"
           :http-request="fnUploadRequest"
           :show-file-list="false">
-          <img v-if="imageUrl" :src="imageUrl" class="avatar">
-          <i v-else class="el-icon-plus avatar-uploader-icon" style="line-height: 163px;"></i>
+          <img v-if="photoUrl" :src="photoUrl" class="image">
+          <i v-else class="el-icon-plus image-uploader-icon" style="line-height: 163px;"></i>
           <div class="el-upload__tip" slot="tip">只能上传png文件，且不超过500kb</div>
         </el-upload>
       </el-form-item>
@@ -35,36 +35,36 @@
 </template>
 
 <script>
-import * as API from '@/api/image/';
+import * as API from '@/api/photo/';
 import uplpadAPI from '@/api/upload/';
 
 export default {
-  name: 'PostImage',
+  name: 'PostPhoto',
   data() {
     return {
-      imageUrl: '',
-      dialogImageUrl: '',
+      photoUrl: '',
+      dialogPhotoUrl: '',
       dialogVisible: false,
       uploading:false,
       form: {
         title: '',
         info: '',
         url: '',
-        avatar: '',
+        image: '',
       },
     };
   },
   methods: {
     fnBeforeUpload(file) {
-      const isImage = (file.type === 'image/png' || file.type === 'image/jpeg');
+      const isPhoto = (file.type === 'image/png' || file.type === 'image/jpeg');
       const isLt2M = file.size / 1024 / 1024 < 2;
-      if (!isImage) {
+      if (!isPhoto) {
         this.$message.error('上传头像图片只能是图片!');
       }
       if (!isLt2M) {
         this.$message.error('上传头像图片大小不能超过 2MB!');
       }
-      return isImage && isLt2M;
+      return isPhoto && isLt2M;
     },
     fnUploadRequest(option) {
       uplpadAPI(option.file.name).then((res) => {
@@ -72,8 +72,8 @@ export default {
         oReq.open('PUT', res.data.put, true);
         oReq.send(option.file);
         oReq.onload = () => {
-          this.imageUrl = res.data.get;
-          this.form.avatar = res.data.key;
+          this.photoUrl = res.data.get;
+          this.form.image = res.data.key;
         };
       }).catch((error) => {
         this.$notify.error({
@@ -85,7 +85,7 @@ export default {
     onSubmit() {
       let _this = this;
       _this.uploading=true
-      API.postImage(this.form).then((res) => {
+      API.postPhoto(this.form).then((res) => {
         if (res.status > 0) {
           this.$notify.error({
             title: '投稿失败',
@@ -98,7 +98,7 @@ export default {
             type: 'success',
           });
           _this.uploading=false,
-          _this.$router.push("/image/"+res.data.id)
+          _this.$router.push("/photo/"+res.data.id)
         }
       }).catch((error) => {
         this.$notify.error({
@@ -115,20 +115,20 @@ export default {
 </script>
 
 <style>
-  .post-image{
+  .post-photo{
     margin:5% 20%;
   }
-  .avatar-uploader .el-upload {
+  .image-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
   }
-  .avatar-uploader .el-upload:hover {
+  .image-uploader .el-upload:hover {
     border-color: #409EFF;
   }
-  .avatar-uploader-icon {
+  .image-uploader-icon {
     font-size: 28px;
     color: #8c939d;
     width: 178px;
@@ -136,7 +136,7 @@ export default {
     line-height: 178px;
     text-align: center;
   }
-  .avatar {
+  .image {
     width: 178px;
     height: 178px;
     display: block;

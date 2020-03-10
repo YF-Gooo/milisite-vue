@@ -8,7 +8,7 @@
     </el-col>
     <el-col :span="16">
         <el-link type="info" href="/">首页</el-link>
-        <el-link type="info" href="/postimage">投放照片</el-link>
+        <el-link type="info" href="/postphoto">投放照片</el-link>
         <el-link type="info" href="/about">关于喵站</el-link>
     </el-col>
     <el-col :span="6">
@@ -41,6 +41,10 @@ export default {
 };
 </script>
 <style>
+.navbar{
+  background-color: #ddd;
+
+}
 .logo{
   height:60px;
   text-align:center;

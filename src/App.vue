@@ -28,12 +28,19 @@ export default {
 
 <style>
   html{
+
     height:100%;
     font-family: 'Avenir', Helvetica, Arial, sans-serif;
     text-align: center;
   }
   body {
+    margin:0px;
+    padding:0px;
     min-height: 100%;
-    position: relative;
+    position: 
+    relative;
+  }
+  header.el-header{
+    padding:0px;
   }
 </style>

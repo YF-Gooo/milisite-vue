@@ -2,13 +2,13 @@
   <div class="home">
     <div class="top">
       <el-row :gutter="20">
-        <el-col :xs="24" :sm="8" :md="8" v-for="image in images" :key="image.id">
-          <el-card class="image-card" @click.native="goImage(image)">
-            <img class="image-avatar" :src="image.avatar">
+        <el-col :xs="24" :sm="8" :md="8" v-for="photo in photos" :key="photo.id">
+          <el-card class="photo-card" @click.native="goPhoto(photo)">
+            <img class="photo-image" :src="photo.image">
             <div>
-              <div class="image-title">{{image.title}}</div>
-              <div class="image-bottom clearfix">
-                <span class="image-info">{{image.info.substring(0, 40)}}</span>
+              <div class="photo-title">{{photo.title}}</div>
+              <div class="photo-bottom clearfix">
+                <span class="photo-info">{{photo.info.substring(0, 40)}}</span>
               </div>
             </div>
           </el-card>
@@ -28,12 +28,12 @@
 </template>
 
 <script>
-import * as API from '@/api/image/';
+import * as API from '@/api/photo/';
 export default {
   name: 'home',
   data() {
     return {
-      images: [],
+      photos: [],
       start: 0,
       limit: 6,
       total: 0,
@@ -45,13 +45,13 @@ export default {
       this.load();
     },
     load() {
-      API.getImages(this.start, this.limit).then((res) => {
-        this.images = res.data.items;
+      API.getPhotos(this.start, this.limit).then((res) => {
+        this.photos = res.data.items;
         this.total = res.data.total;
       });
     },
-    goImage(image) {
-      this.$router.push({ name: 'showImage', params: { imageID: image.id } });
+    goPhoto(photo) {
+      this.$router.push({ name: 'showPhoto', params: { photoID: photo.id } });
     },
   },
   //vue对象中
@@ -66,22 +66,22 @@ export default {
 </script>
 
 <style>
-.home .image-avatar {
+.home .photo-image {
   width: 100%;
 }
-.image-title {
+.photo-title {
   margin: 4px 0px 4px 0px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
-.image-bottom {
+.photo-bottom {
   margin-top: 4px;
 }
-.image-info {
+.photo-info {
   color: #909399;
 }
-.image-card {
+.photo-card {
   margin-bottom: 14px;
   cursor: pointer;
 }
